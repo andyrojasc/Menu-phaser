@@ -13,7 +13,7 @@ PlanetasMenu.prototype = {
     themes.push(game.add.sprite(0, 0, 'theme2'));
     themes.push(game.add.sprite(0, 0, 'theme3'));
     themes.push(game.add.sprite(0, 0, 'theme4'));
-    game.load.spritesheet('botonVolver', 'volver', 20, 20);
+    game.load.spritesheet('botonVolver', 'volverPrincipalPlanetas', 20, 20);
 
     //number of themes
     var totalThemes = 4;
@@ -25,7 +25,7 @@ PlanetasMenu.prototype = {
     //speed of moving animation
     var animationSpeed = 200;
 
-    botonVolver = game.add.button(20, window.innerHeight - 70, 'volver', volverMenuPrincipal, this, 0);
+    botonVolver = game.add.button(20, window.innerHeight - 70, 'volverPrincipalPlanetas', volverMenuPrincipalClick, this, 0);
     
     //initial setup; all items on the right side; anchor set to mid;
     themes.forEach(function (item) {
@@ -159,8 +159,8 @@ PlanetasMenu.prototype = {
 
 };
 
-function volverMenuPrincipal () {
-    game.state.start("MenuPrincipal", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+function volverMenuPrincipalClick () {
+    game.state.start("MenuPrincipal", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight); 
 }
 function clickMundo1 () {
     console.log("clickMundo1");

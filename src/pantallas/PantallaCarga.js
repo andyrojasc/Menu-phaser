@@ -9,6 +9,7 @@ PantallaCarga.prototype = {//Cargar toda la pantalla
     game.load.script('menuprincipal','src/pantallas/MenuPrincipal.js');
     game.load.script('planetas', 'src/pantallas/PlanetasMenu.js');
     game.load.script('planetasmenu','src/pantallas/MenuPrincipal.js');
+    game.load.script('menuconfiguracion','src/pantallas/MenuConfiguracion.js');
     game.load.script('StateTransition', 'phaser-state-transition.js');
   },
 
@@ -27,7 +28,12 @@ PantallaCarga.prototype = {//Cargar toda la pantalla
 
     game.load.image('menu-bg', 'assets/img/menuPrincipal/menu-bg.jpg');
     game.load.image('botonUniversal', 'assets/img/pantallaNiveles/planetas.png');
-    game.load.image('volver', 'assets/img/pantallaNiveles/salir.png');
+
+    //Botones inferiores de salida
+    game.load.image('volverPrincipalPlanetas', 'assets/img/pantallaNiveles/salir.png');
+    game.load.image('salirConfig', 'assets/img/pantallaNiveles/salir.png');
+    game.load.image('configMenu', 'assets/img/pantallaNiveles/salir.png');
+
     game.load.image('background', 'assets/img/pantallaNiveles/background.png');
     game.load.image('botonUniversal', 'assets/img/pantallaNiveles/planetas.png');
     game.load.image('volver', 'assets/img/pantallaNiveles/salir.png');
@@ -85,6 +91,7 @@ PantallaCarga.prototype = {//Cargar toda la pantalla
 
     game.state.add("MenuPrincipal",MenuPrincipal);
     game.state.add("PlanetasMenu",PlanetasMenu);
+    game.state.add("MenuConfiguracion",MenuConfiguracion);
   },
 
   /*addGameMusic: function () {

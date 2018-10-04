@@ -1,4 +1,4 @@
-var botonJugar, botonSalir, botonCreditos;
+var botonJugar, botonSalir, botonCreditos, botonConfig;
 var MenuPrincipal = function() {};
 
 MenuPrincipal.prototype = {
@@ -22,6 +22,9 @@ MenuPrincipal.prototype = {
     game.load.spritesheet('botonSalir', 'botonJugar', 193, 71);
     game.add.existing(this.titleText);
 
+    game.load.spritesheet('botonConfig', 'configMenu', 20, 20);
+
+    botonVolver = game.add.button(20, window.innerHeight - 70, 'configMenu', menuConfigClick, this, 0);
 
     //button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
     botonJugar = game.add.button(game.world.centerX - 95, game.world.centerY-80, 'botonJugar', clickJugar, this,0);
@@ -31,6 +34,10 @@ MenuPrincipal.prototype = {
 
 
 };
+
+function menuConfigClick() {
+  game.state.start("MenuConfiguracion", Phaser.Plugin.StateTransition.Out.SlideTop, Phaser.Plugin.StateTransition.In.SlideTop);
+}
 
 function clickJugar () {
     //game.state.start("PlanetasMenu", Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.In.SlideLeft);
