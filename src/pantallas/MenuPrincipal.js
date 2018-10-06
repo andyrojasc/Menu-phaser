@@ -1,4 +1,4 @@
-var botonJugar, botonSalir, botonCreditos, botonConfig, escalarAncho, escalarAlto, posicionY;
+var botonJugar, botonSalir, botonCreditos, botonConfig, escalarAncho, escalarAlto, posicionY, botonesX, botonJugarY, botonSalirY, botonConfigY;
 
 var MenuPrincipal = function() {};
 
@@ -30,6 +30,18 @@ MenuPrincipal.prototype = {
         this.fondo.width = escalarAncho;
         this.fondo.height = escalarAlto;
 
+        botonesX = game.world.centerX - 95;
+        if (window.innerHeight > 590) {
+            console.log("HOLA1");
+            botonJugarY = game.world.centerY + 15;
+            botonSalirY = game.world.centerY + 95;
+            botonConfigY = window.innerHeight - 125;
+        } else {
+            console.log("HOLA2");
+            botonJugarY = game.world.centerY - 10;
+            botonSalirY = game.world.centerY + 65;
+            botonConfigY = window.innerHeight - 100;
+        }
 
         //nombreVariable, objetoCargado, tamanios
         game.load.spritesheet('botonJugar', 'botonJugar', 193, 71);
@@ -39,10 +51,10 @@ MenuPrincipal.prototype = {
         game.load.spritesheet('botonConfiguracion', 'botonConfiguracion', 20, 20);
 
         //button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
-        botonJugar = game.add.button(game.world.centerX - 95, game.world.centerY + 15, 'botonJugar', clickJugar, this, 0);
-        botonSalir = game.add.button(game.world.centerX - 95, game.world.centerY + 95, 'botonSalir', clickSalir, this, 0);
+        botonJugar = game.add.button(botonesX, botonJugarY, 'botonJugar', clickJugar, this, 0);
+        botonSalir = game.add.button(botonesX, botonSalirY, 'botonSalir', clickSalir, this, 0);
 
-        botonConfig = game.add.button(20, window.innerHeight - 125, 'botonConfiguracion', menuConfigClick, this, 0);
+        botonConfig = game.add.button(20, botonConfigY, 'botonConfiguracion', menuConfigClick, this, 0);
     },
 
 
