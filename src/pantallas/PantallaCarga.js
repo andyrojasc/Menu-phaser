@@ -66,21 +66,23 @@ PantallaCarga.prototype = { //Cargar toda la pantalla
     },
 
     init: function() { //orientacion x ,orientacion y, Recibe la img llamada en main.js(brand y loading)
-        this.logo = game.make.sprite(game.world.centerX, game.world.centerY, 'brand');
-        utils.centerGameObjects([this.logo]);
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.pageAlignHorizontally = true;
+        game.scale.pageAlignVertically = true;
     },
 
     preload: function() {
-        game.scale.forceOrientation(false, true);
-        game.add.sprite(0, 0, 'stars');
+        //game.scale.forceOrientation(false, true);
+        //this.logo = game.make.sprite(game.world.centerX, game.world.centerY, 'brand');
+        //utils.centerGameObjects([this.logo]);
 
-        if (window.innerWidth < 630) {
+      /*  if (window.innerWidth < 630) {
             escalar = window.innerWidth / 1000;
         } else {
             escalar = window.innerWidth / 1400;
-        }
+        } */
 
-        game.add.existing(this.logo).scale.setTo(escalar);
+        //game.add.existing(this.logo);
 
         this.loadScripts();
         this.loadImages();
@@ -103,6 +105,11 @@ PantallaCarga.prototype = { //Cargar toda la pantalla
     },*/
 
     create: function() {
+        game.add.sprite(0, 0, 'stars');
+        this.logo=game.add.sprite(game.world.centerX, game.world.centerY, 'brand');
+        this.logo.scale.setTo(0.4);
+        this.logo.anchor.setTo(0.5);
+
         this.addGameStates();
         //this.addGameMusic();     -----> Agrega el cargarMusica
 

@@ -6,7 +6,7 @@
     create:onCreate,
     resize:onResize // <- this will be called each time the game is resized
   }),*/
-var game = new Phaser.Game("100%","100%",Phaser.CANVAS,""),
+var game = new Phaser.Game(360,640,Phaser.AUTO),
   Main = function () {};
 
 

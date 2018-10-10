@@ -17,18 +17,8 @@ MenuPrincipal.prototype = {
     create: function() {
         game.stage.disableVisibilityChange = true;
 
-        if (window.innerWidth < 630) {
-            escalarAncho = window.innerWidth;
-            escalarAlto = window.innerHeight;
-            posicionY = 0;
-        } else {
-            escalarAncho = window.innerWidth;
-            escalarAlto = window.innerHeight + 110;
-            posicionY = -50;
-        }
-        this.fondo = game.add.sprite(0, posicionY, 'menu-principal-bg');
-        this.fondo.width = escalarAncho;
-        this.fondo.height = escalarAlto;
+        this.fondo = game.add.sprite(0, 0, 'menu-principal-bg');
+        this.fondo.scale.setTo(0.215);
 
         botonesX = game.world.centerX - 95;
         if (window.innerHeight > 590) {
