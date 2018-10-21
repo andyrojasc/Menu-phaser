@@ -1,4 +1,5 @@
 var botonJugar, botonSalir, botonCreditos, botonConfig, escalarAncho, escalarAlto, posicionY, botonesX, botonJugarY, botonSalirY, botonConfigY;
+var tamanioBotonesH, tamanioBotonesW;
 
 var MenuPrincipal = function() {};
 
@@ -15,39 +16,70 @@ MenuPrincipal.prototype = {
         this.optionCount = 1;
     },
     create: function() {
-        game.stage.disableVisibilityChange = true;
 
-        this.fondo = game.add.sprite(0, 0, 'menu-principal-bg');
-        this.fondo.scale.setTo(0.215);
 
-        botonesX = game.world.centerX - 95;
-        if (window.innerHeight > 590) {
-            console.log("HOLA1");
-            botonJugarY = game.world.centerY + 15;
-            botonSalirY = game.world.centerY + 95;
-            botonConfigY = window.innerHeight - 125;
+        if (window.innerWidth < 630) {
+            //Mobile
+            escalarAncho = window.innerWidth;
+            escalarAlto = window.innerHeight;
+            posicionY = 0;
+            tamanioBotonesJugarSalir = 0.65;
         } else {
-            console.log("HOLA2");
-            botonJugarY = game.world.centerY - 10;
-            botonSalirY = game.world.centerY + 65;
-            botonConfigY = window.innerHeight - 100;
+            //Tablet
+            escalarAncho = window.innerWidth;
+            escalarAlto = window.innerHeight + 110;
+            posicionY = -50;
+            tamanioBotonesJugarSalir = 1;
+        }
+        //this.fondo = game.add.sprite(0, posicionY, 'menu-principal-bg'); // this.fondo.width = escalarAncho;
+        //this.fondo.height = escalarAlto;
+
+        botonesX = window.innerWidth / 2 - 95;
+        if (window.innerHeight > 590) {
+            //console.log("HOLA celulares grandes");
+            botonJugarY = window.innerHeight / 2 + 15;
+            botonSalirY = window.innerHeight / 2 + 95;
+            botonConfigY = window.innerHeight - 125;
+
+            if (window.innerWidth > 750) {
+                //console.log("HOLATablet");
+                botonesX = window.innerWidth / 2 - 140;
+                botonJugarY = window.innerHeight / 2 + 45;
+                botonSalirY = window.innerHeight / 2 + 170;
+                botonConfigY = window.innerHeight - 125;
+            }
+        } else {
+            if (window.innerHeight > 540) {
+                //console.log("HOLAMedianos");
+                botonJugarY = window.innerHeight / 2;
+                botonSalirY = window.innerHeight / 2 + 75;
+                botonConfigY = window.innerHeight - 110;
+            } else {
+                //console.log("HOLA peques");
+                botonJugarY = window.innerHeight / 2;
+                botonSalirY = window.innerHeight / 2 + 70;
+                botonConfigY = window.innerHeight - 85;
+            }
         }
 
-        //nombreVariable, objetoCargado, tamanios
-        game.load.spritesheet('botonJugar', 'botonJugar', 193, 71);
-        game.load.spritesheet('botonSalir', 'botonSalir', 193, 71);
-        //game.add.existing(this.titleText);
-
-        game.load.spritesheet('botonConfiguracion', 'botonConfiguracion', 20, 20);
+        // button = game.add.button(game.world.centerX, game.world.centerY, 'botonP', clickJugar, this);
+        // button.scale.set(0.35);
+        //	Set the anchor of the sprite in the center, otherwise it would rotate around the top-left corner
+        //  button.scale.setTo(0.4, 0.4);
 
         //button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
-        botonJugar = game.add.button(botonesX, botonJugarY, 'botonJugar', clickJugar, this, 0);
-        botonSalir = game.add.button(botonesX, botonSalirY, 'botonSalir', clickSalir, this, 0);
+        botonJugar = game.add.button(botonesX, botonJugarY, 'botonJugarC', clickJugar, this);
+        botonSalir = game.add.button(botonesX, botonSalirY, 'botonSalir', clickSalir, this);
+        // botonJugar.width = 197;
+        //botonJugar.width = tamanioBotonesW;
+        //botonJugar.height = 63;
+        //botonJugar.scale.set(0.4, 0.4);
+        botonJugar.scale.setTo(tamanioBotonesJugarSalir, tamanioBotonesJugarSalir);
+        botonSalir.scale.setTo(tamanioBotonesJugarSalir, tamanioBotonesJugarSalir);
 
-        botonConfig = game.add.button(20, botonConfigY, 'botonConfiguracion', menuConfigClick, this, 0);
+
+        botonConfig = game.add.button(20, botonConfigY, 'botonConfiguracion', menuConfigClick, this);
     },
-
-
 };
 
 function clickJugar() {
